@@ -1,11 +1,19 @@
 <?php
 require_once('header.php');
 require_once('conexion.php');
-$id = $_GET['id'];
-$result = $conexion->query("SELECT * FROM eventos where id = $id");
-$row = $result->fetch_array();
-$userId = $row['organizador'];
-$user = $conexion->query("SELECT * FROM usuario WHERE id = $userId")->fetch_array(); 
+if(isset($_SESSION['usuarivalido']))
+{
+    $id = $_GET['id'];
+    $result = $conexion->query("SELECT * FROM eventos where id = $id");
+    $row = $result->fetch_array();
+    $userId = $row['organizador'];
+    $user = $conexion->query("SELECT * FROM usuario WHERE id = $userId")->fetch_array();
+}
+else
+{
+    header('location: login.php?v=1');
+}
+ 
 ?>
 <link rel="stylesheet" href="css/event.css">
 

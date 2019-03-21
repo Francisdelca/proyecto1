@@ -3,6 +3,7 @@ require_once("header.php");
 ?>
 <link href="css/1.css" rel="stylesheet">
 <div class="contain">
+
     <form action="verificar.php" method="post">
         <h1>Inicia Sesión</h1>
                 <br>

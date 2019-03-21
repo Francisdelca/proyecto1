@@ -6,6 +6,6 @@ if(isset($_SESSION['usuarivalido']))
 }
 else
 {
-    header('location: login.php?b=2');
+    header('location: login.php?v=1');
 }
 ?>

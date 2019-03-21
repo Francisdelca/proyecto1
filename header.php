@@ -47,7 +47,7 @@ if(isset($_SESSION['usuarivalido']))
                 else{
                     echo"
                 <li>
-                    <a href='login.php'>Acceder</a>
+                    <a href='login.php?v=1'>Acceder</a>
                 </li>
                 <li>
                     <a href='registro.php'>Registro</a>

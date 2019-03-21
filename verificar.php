@@ -4,7 +4,6 @@ require_once('conexion.php');
 $usuario = $_POST['usser'];
 $clave = $_POST['pass'];
 $bandera = 0;
-//echo "valores: " .$usuario. " " .$clave;
 
 $sql = "SELECT *FROM usuario";
 
@@ -22,6 +21,7 @@ while($fila = $resultado -> fetch_array(MYSQLI_ASSOC))
             //inicio de una sesion valida 
             session_start();
             $_SESSION['usuarivalido']=$fila; //guardar todo registro corecto 
+            $idu = $_SESSION['usuarivalido']['id'];
             break; 
         }
         else
@@ -46,7 +46,7 @@ $ruta = "";
 switch($bandera)
 {
     case 1: //todo correcto
-        $ruta="location: index.php";
+        $ruta="location: perfil.php?idu=".$idu;
         break;
     case 2: //error en la clave
         $ruta="location: login.php?v=2";
@@ -54,6 +54,7 @@ switch($bandera)
     case 3: //error en el usuario
         $ruta="location: login.php?v=3";
         break;
+    
 }
 
 header($ruta);//redireciona según el caso

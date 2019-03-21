@@ -1,11 +1,18 @@
 <?php
 require_once('conexion.php');
 require_once("header.php");
-
-$iduser=$_SESSION['usuarivalido']['id'];
 $id = $_GET['id'];
-$rel = $conexion -> query("SELECT * FROM eventos WHERE id = $id");
-$row = $rel -> fetch_array();
+if(isset($_SESSION['usuarivalido']))
+{
+    $iduser=$_SESSION['usuarivalido']['id'];
+    $rel = $conexion -> query("SELECT * FROM eventos WHERE id = $id");
+    $row = $rel -> fetch_array();
+}
+else
+{
+    header('location: login.php?v=4&&id='.$id);
+}
+
 ?>
 <link href="css/1.css" rel="stylesheet" id="bootstrap-css">
 <div class="contain background">

@@ -1,9 +1,16 @@
 <?php
 require_once('header.php');
 require_once('conexion.php');
-$userId = $_GET['idu'];
-$user = $conexion -> query("SELECT * FROM usuario WHERE id = $userId");
-$row = $user -> fetch_array();
+if(isset($_SESSION['usuarivalido']))
+{
+    $userId = $_GET['idu'];
+    $user = $conexion -> query("SELECT * FROM usuario WHERE id = $userId");
+    $row = $user -> fetch_array();
+}
+else
+{
+    header('location: login.php?v=1');
+}
 ?>
 <div class="perfil-container">
     <div class="perfil">
@@ -18,7 +25,7 @@ $row = $user -> fetch_array();
             <ul>
                 <li><i class="far fa-envelope">&nbsp;</i><?php echo $row["email"] ?></li>
                 <li><i class="fas fa-calendar-day">&nbsp;</i><?php echo $row["nacimiento"] ?></li>
-                <li><i class="fas fa-genderless">&nbsp;</i><?php echo $row["sexo"] ?></li>
+                <li><i class="fas fa-genderless">&nbsp;</i><?php echo $row["sexo"]?></li>
             </ul>
         </div>
 
