@@ -15,7 +15,7 @@ else
 <div class="perfil-container">
     <div class="perfil">
         <div class="foto-perfil">
-            <img src="" alt="">
+            <img src="img/usuario/<?php echo $row['foto'];?>" alt="">
         </div>
         <div class="name-user">
             <h2><?php echo $row["nombre"], " ", $row["apellido"] ?></h2>
@@ -25,7 +25,18 @@ else
             <ul>
                 <li><i class="far fa-envelope">&nbsp;</i><?php echo $row["email"] ?></li>
                 <li><i class="fas fa-calendar-day">&nbsp;</i><?php echo $row["nacimiento"] ?></li>
-                <li><i class="fas fa-genderless">&nbsp;</i><?php echo $row["sexo"]?></li>
+                <li>
+                <?php 
+                    if($row["sexo"] == 1)
+                    {
+                        echo '<i class="fas fa-mars">&nbsp;</i>Masculino';
+                    }
+                    else
+                    {
+                        echo '<i class="fas fa-venus">&nbsp;</i>Femenino';
+                    }
+                ?>
+                </li>
             </ul>
         </div>
 
@@ -34,6 +45,9 @@ else
                 <li><a id="tusEventos" class="link-active" href="#">Tus eventos</a></li>
                 <li><a id="tusEntradas" href="#">Tus entradas</a></li>
             </ul>
+        </div>
+        <div class="edit">
+                        <a href="editarPerfil.php">Editar perfil</a>
         </div>
     </div>
     <div id="contenido">

@@ -16,8 +16,8 @@ require_once("header.php");
             <input type="text" name="fecha" placeholder="01-01-2019" id="fecha" maxlength="10" required> 
             <label for="">Sexo</label>
             <select name="sexo" id="" required>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
             </select>
         </div>
         <div class="datosUsuario">

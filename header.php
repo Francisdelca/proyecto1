@@ -31,7 +31,7 @@ if(isset($_SESSION['usuarivalido']))
                     <a href="index.php">Inicio</a>
                 </li>
                 <li>
-                    <a href="eventos.php?f=0&&id=0">Eventos</a>
+                    <a href="eventos.php">Eventos</a>
                 </li>
                 <?php
                 if(isset($_SESSION['usuarivalido']))

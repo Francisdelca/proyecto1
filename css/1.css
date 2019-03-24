@@ -2,7 +2,7 @@
 {
     box-sizing: border-box;
     width: 100%;
-    padding: 120px;
+    padding: 50px 120px;
     min-height: calc(100vh - 75px);
 }
 form
@@ -138,12 +138,32 @@ input[type="submit"]
     justify-content: space-between;
     align-items: flex-end;
 }
-.barCode h2
-{
-
-}
 .barCode img
 {
     width: 40%;
     height: 80%;
+}
+/* subir foto de perfil */
+input.guardar-foto-perfil
+{
+    width: 20%;
+}
+.foto-perfil
+{
+    height: 200px;
+    width: 200px;
+    margin-bottom: 30px;
+}
+.foto-perfil label
+{
+    box-sizing: border-box;
+    display: block;
+    background: #000;
+    padding: 5px;
+    color:#fff;
+    cursor: pointer;
+    font-size: .8em;
+    border: 1px solid var(--color3);
+    text-align: center;
+    width: 100%;
 }

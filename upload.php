@@ -20,37 +20,37 @@ else
 <form action="comeon.php?id=<?php echo $row['id'];?>" method="post" class="contenedor" enctype="multipart/form-data">
     <div class="todo-evento">
         <div id="imgPortada" >
-        <img id="port">
-            <input type="file" name="portada" id="portada">
+        <img id="port" src="img/eventos/<?php echo $row['portada'];?>">
+            <input type="file" name="portada" id="portada" value="<?php echo $row['portada'];?>">
             <label for="portada" id="imgname2"><i class="far fa-image">&nbsp;</i>Elige una portada</label>
         </div>
         <div class="datos-evento">
             <div id="imgMini">
-                <img id="mini">
-                <input type="file" name="imagen" id="miniatura">
+                <img id="mini" src="img/eventos/<?php echo $row['imagen'];?>">
+                <input type="file" name="imagen" id="miniatura" value="<?php echo $row['imagen'];?>">
                 <label for="miniatura" id="imgname1"><i class="far fa-image">&nbsp;</i>Elige una miniatura</label>
             </div>
             <div class="info-evento">
-                <h1><?php echo $row['titulo'];?></h1>
+                <input class="evento-title" type="text" name="titulo" value="<?php echo $row['titulo'];?>">
                 <a href="perfil.php?user=<?php echo $user['id']?>"><i class="fas fa-user-astronaut">&nbsp;</i><?php echo $user['usuario']?></a>
                 <div class="datitos">
-                <p><i class="fas fa-map-marker-alt">&nbsp;</i><?php echo $row['direccion'];?></p>
-                <p><i class="fas fa-calendar-day">&nbsp;</i><?php echo $row['fecha'];?></p>
-                <p><i class="fas fa-clock">&nbsp;</i><?php echo $row['hora'];?></p>
+                <p><i class="fas fa-map-marker-alt">&nbsp;</i><input type="text" name="direccion" value="<?php echo $row['direccion'];?>"></p>
+                <p><i class="fas fa-calendar-day">&nbsp;</i><input type="text" name="fecha" value="<?php echo $row['fecha'];?>"></p>
+                <p><i class="fas fa-clock">&nbsp;</i><input type="text" name="hora" value="<?php echo $row['hora'];?>"></p>
                 <p><i class="fas fa-users">&nbsp;</i><?php echo $row['asistentes'];?></p>
                 </div>
             </div>
         </div>
         <div class="descript">
             <h2>Descripcion:</h2><br>
-            <p><textarea maxlength="500" name="descripcion"  rows="7" placeholder="Describe tu evento..."></textarea></p>
+            <p><textarea maxlength="500" name="descripcion"  rows="7" placeholder="Describe tu evento..."><?php echo $row['descripcion'];?></textarea></p>
         </div>
     </div>
 
     <!-- ads -->
     <div class="sidebar">
         <div class="entradas">
-            <h2>S/.<input type="text" name="precio" planceholder="Precio"></h2> <a href="#">Comprar</a>
+            <h2>S/.<input type="text" name="precio" planceholder="Precio" value="<?php echo $row['precio'];?>"></h2> <a href="#">Comprar</a>
         </div>
     </div>
     <div class="envio">

@@ -104,6 +104,26 @@ $('.prev').click(function()
         miniatura(this);
     });
 
+    //foto de perfil
+    function perfil(input)
+    {
+        if(input.files && input.files[0])
+        {
+            var reader = new FileReader();
+
+            reader.onload = function(e)
+            {
+                $('#foto').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $('#fotoPerfil').change(function()
+    {
+        perfil(this);
+    });
+
 
     //contenido de perfil
     $.ajax({  
@@ -135,7 +155,8 @@ $('.prev').click(function()
             }  
         });
     });
-    
+
+
 
 
 });

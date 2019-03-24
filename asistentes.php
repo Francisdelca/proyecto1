@@ -24,7 +24,13 @@ $asistentes = $conexion->query("SELECT * FROM $titulo");
 <?php
 while($row = $asistentes->fetch_array())
 {
-?>
+    if(empty($row))
+    {
+        echo"Aún no tiene asistentes";
+    }
+    else
+    {
+    ?>
     <tr>
         <td><?php echo $row['usuario'] ?></td>
         <td><?php echo $row['nombre'] ?></td>
@@ -34,7 +40,8 @@ while($row = $asistentes->fetch_array())
         <td><?php echo $row['sexo'] ?></td>
         <td><?php echo $row['entradas'] ?></td>
     </tr>
-<?php
+    <?php
+    }
 }
 ?>
 </tbody>

@@ -53,11 +53,19 @@
 }
 .info-evento
 {
+    width: calc(100% - 250px);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+.evento-title
+{
+    padding: 5px;
+    border: 1px solid var(--color3);
+    border-radius: var(--radiusmin);
+    font-size: 1.5em;
 }
 .datitos
 {
@@ -72,6 +80,12 @@
 {
     margin-right: 50px;
     margin-bottom:20px;
+}
+.datitos input
+{
+    padding: 5px;
+    border: 1px solid var(--color3);
+    border-radius: var(--radiusmin);
 }
 .descript
 {
@@ -138,10 +152,6 @@
     padding: 8px 20px;
     border: 0;
     font-size: 1.5em;
-}
-input[type="file"]
-{
-    display: none;
 }
 label
 {

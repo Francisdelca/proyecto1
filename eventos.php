@@ -1,103 +1,121 @@
 <?php 
 require_once("header.php");
 require_once("conexion.php");
-
-$filtro = $_GET['f'];
-$id = $_GET['id'];
+$rel = $conexion -> query("SELECT * FROM categoria");
 ?>
-<div class="categoria">
-<?php
-if($id > 0)
-{
-    $cat = $conexion->query("SELECT * FROM categoria WHERE id != $id");
-}
-else
-{
-    $cat = $conexion->query("SELECT * FROM categoria");
-}
-
-echo "<div class='cate'> <h4>Categorias</h4><br>";
-while($catRow = $cat->fetch_array())
-{
-?>
-<a class="cate-item" href="eventos.php?f=<?php echo $filtro?>&&id=<?php echo $catRow['id']?>" style="background:<?php echo $catRow['color']?>">
-<?php echo $catRow['categoria']?>
-</a>
-<?php
-}
-?>
+<div class="all-events">
+    <div class="filtro">
+        <div class="categoria">
+            <h3>Categoria</h3>
+            <div id="select-cat">
+            </div>
+            <div class="all-cat">
+                <?php
+                while($row = $rel -> fetch_array())
+                {
+                ?>
+                <a href="#" class="cat-link" onclick="cate(<?php echo $row['id']?>);" style="background: <?php echo $row['color']?>">
+                    <?php echo $row['categoria'] ?>
+                </a>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+        <div class="mostrar-solo">
+        <h3>Mostrar</h3><br>
+            <ul>
+                <li><a href="#" class="mostrarSolo solo-selected" onclick="mostrarSolo(0)"><i class="far fa-list-alt">&nbsp;</i>Todos</a></li>
+                <li><a href="#" class="mostrarSolo" onclick="mostrarSolo(1)"><i class="fas fa-chart-line">&nbsp;</i>Top ventas</a></li>
+                <li><a href="#" class="mostrarSolo" onclick="mostrarSolo(2)"><i class="far fa-calendar-alt">&nbsp;</i>Éste mes</a></li>
+                <li><a href="#" class="mostrarSolo" onclick="mostrarSolo(3)"><i class="fas fa-fire">&nbsp;</i>Nuevos eventos</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="mostrar-eventos"></div>
 </div>
 
-<div class="cat-select">
-<?php
-$sel = $conexion->query("SELECT * FROM categoria WHERE id = $id");
-$catRow = $sel->fetch_array();
-?>
-<a class="cate-item" href="eventos.php?f=<?php echo $filtro?>&&id=<?php echo $catRow['id']?>" style="background:<?php echo $catRow['color']?>">
-<?php echo $catRow['categoria']?>
-</a>
-</div>
-
-<div class="order">
-<p><i class="fas fa-sliders-h"></i></p>
-<ul>
-    <li><a href="eventos.php?f=1&&id=<?php echo $id ?>"><i class="fas fa-chart-line">&nbsp;</i>Top ventas</a></li>
-    <li><a href="eventos.php?f=2&&id=<?php echo $id ?>"><i class="far fa-calendar-alt">&nbsp;</i>Esta semana</a></li>
-    <li><a href="eventos.php?f=3&&id=<?php echo $id ?>"><i class="fas fa-fire">&nbsp;</i>Nuevos eventos</a></li>
-</ul>
-</div>
-<a href="eventos.php?f=0&&id=0" class="clean">Limpiar filtros</a>
-</div>
-<!-- fin categorias -->
-<div class="event-content">
-<?php
-switch($filtro)
+<script>
+var category = 0;
+var filter = 0;
+$(document).ready(function()
 {
-    case 0:
-        if($id == 0)
-        {
-            $rel = $conexion->query("SELECT * FROM eventos"); 
+    //categorias limpias
+    $.ajax({
+        url: 'selectCat.php',  
+        type: 'POST',
+        dataType:"html",
+        data: {cat: category, fil: filter},
+        success: function(data) {  
+            $('#select-cat').html(data);  
+        }  
+    });
+    //mostramos todos los eventos
+    $.ajax({  
+        url: 'mostrarEventos.php',  
+        type: 'POST',
+        dataType:"html",
+        data: {cat: category, fil: filter},
+        success: function(data) {  
+            $('#mostrar-eventos').html(data); 
         }
-        else
-        {
-            $rel = $conexion->query("SELECT * FROM eventos WHERE categoria = $id");
-        }
-    break;
-    case 1:
-    if($id == 0)
-    {
-        $rel = $conexion->query("SELECT * FROM eventos WHERE asistentes > 30 ORDER BY asistentes DESC"); 
-    }
-    else
-    {
-        $rel = $conexion->query("SELECT * FROM eventos WHERE asistentes > 30 AND categoria = $id ORDER BY asistentes DESC"); 
-    }
-    break;
-    case 2:
-    if($id == 0)
-    {
-        $rel = $conexion->query("SELECT * FROM eventos WHERE fecha  BETWEEN CURDATE() and CURDATE() + INTERVAL 7 DAY"); 
-    }
-    else
-    {
-        $rel = $conexion->query("SELECT * FROM eventos WHERE fecha  BETWEEN CURDATE() and CURDATE() + INTERVAL 7 DAY AND categoria = $id");  
-    }
-    break;
-    case 3:
-    if($id == 0)
-    {
-        $rel = $conexion->query("SELECT * FROM eventos ORDER BY id DESC"); 
-    }
-    else
-    {
-        $rel = $conexion->query("SELECT * FROM eventos  WHERE categoria = $id ORDER BY id DESC"); 
-    } 
-    break;
-}
+    });
 
-require_once("itemEvento.php");
-?>
-</div>
+    //mostramos y ocultamos la categoria selecionada
+    $('.cat-link').click(function () {
+        $('.cat-link').show(200);
+        $(this).hide(200);
+    });
+});
+
+$('.categoria').hover(function()
+{
+    $('.all-cat').slideToggle(200);
+});
+function cate(cat)
+{
+    category = cat;
+    $.ajax({
+        url: 'selectCat.php',  
+        type: 'POST',
+        dataType:"html",
+        data: {cat: category, fil: filter},
+        success: function(data) {  
+            $('#select-cat').html(data);  
+        }  
+    });
+    $.ajax({  
+        url: 'mostrarEventos.php',  
+        type: 'POST',
+        dataType:"html",
+        data: {cat: category, fil: filter},
+        success: function(data) {  
+            $('#mostrar-eventos').html(data); 
+        }
+    });
+    
+}
+function mostrarSolo(val)
+{
+    filter = val;
+    $.ajax({  
+        url: 'mostrarEventos.php',  
+        type: 'POST',
+        dataType:"html",
+        data: {cat: category, fil: filter},
+        success: function(data) {  
+            $('#mostrar-eventos').html(data); 
+        }
+    });
+}
+$('.mostrarSolo').click(function()
+{
+    $('.mostrarSolo').removeClass('solo-selected');
+    $(this).addClass('solo-selected');
+});
+
+
+</script>
 <?php
 require_once("footer.php");
 ?>

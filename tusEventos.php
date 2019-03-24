@@ -48,7 +48,7 @@ while($row = $rel->fetch_array())
             url: 'asistentes.php',  
             type: 'GET',
             dataType:"html",
-            data: 'id= '+id,
+            data: 'id='+id,
             success: function(data) {  
                 $('#contenido').html(data);  
             }  

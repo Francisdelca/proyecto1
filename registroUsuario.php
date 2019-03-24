@@ -24,7 +24,7 @@ if($resultado)
         }
     }
     $idu = $_SESSION['usuarivalido']['id'];
-    $ruta = 'location: perfil.php?idu='.$idu;
+    $ruta = 'location: fotoPerfil.php?idu='.$idu;
 }
 else
 {

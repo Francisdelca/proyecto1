@@ -50,7 +50,7 @@ $cont = $cont + 1;
 <section class="section"> <!-- Top Ventas -->
 <div class="finter-title">
         <h3>Top ventas</h3>
-        <a href="eventos.php?f=1&&id=0">Ver más</a>
+        <a href="eventos.php">Ver más</a>
     </div>
     <div class="content">
         <?php
@@ -64,12 +64,14 @@ $cont = $cont + 1;
 </section>
 <section class="section"> <!-- weak -->
 <div class="finter-title">
-        <h3>Esta semana</h3>
-        <a href="eventos.php?f=2&&id=0">Ver más</a>
+        <h3>Este mes</h3>
+        <a href="eventos.php">Ver más</a>
     </div>
     <div class="content">
         <?php
-        $rel = $conexion->query("SELECT * FROM eventos LIMIT 3");
+        $m = $conexion -> query("SELECT * FROM eventos")->fetch_array();
+        $mes = date("m", strtotime($m['fecha']));
+        $rel = $conexion -> query("SELECT * FROM eventos WHERE $mes = MONTH(CURDATE()) ORDER BY fecha DESC LIMIT 3");
         require("itemEvento.php");
         
         ?>
@@ -78,7 +80,7 @@ $cont = $cont + 1;
 <section class="section"> <!-- New -->
     <div class="finter-title">
         <h3>Nuevos eventos</h3>
-        <a href="eventos.php?f=3&&id=0">Ver más</a>
+        <a href="eventos.php">Ver más</a>
     </div>
     <div class="content">
     <?php

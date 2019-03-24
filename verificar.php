@@ -17,7 +17,14 @@ while($fila = $resultado -> fetch_array(MYSQLI_ASSOC))
         //clave
         if($fila['clave']==$clave)
         {
-            $bandera = 1;
+            if($fila['t_usuario'])
+            {
+                $bandera = 4;
+            }
+            else
+            {
+                $bandera = 1;
+            }
             //inicio de una sesion valida 
             session_start();
             $_SESSION['usuarivalido']=$fila; //guardar todo registro corecto 
@@ -53,6 +60,9 @@ switch($bandera)
         break;
     case 3: //error en el usuario
         $ruta="location: login.php?v=3";
+        break;
+    case 4: //error en el usuario
+        $ruta="location: dash/examples/dashboard.php";
         break;
     
 }
