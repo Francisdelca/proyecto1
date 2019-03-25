@@ -43,7 +43,7 @@ else
         </div>
         <div class="descript">
             <h2>Descripcion:</h2><br>
-            <p><textarea maxlength="500" name="descripcion"  rows="7" placeholder="Describe tu evento..."><?php echo $row['descripcion'];?></textarea></p>
+            <p><textarea maxlength="200" name="descripcion"  rows="1" placeholder="Describe tu evento..."><?php echo $row['descripcion'];?></textarea></p>
         </div>
     </div>
 

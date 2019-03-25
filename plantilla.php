@@ -43,7 +43,7 @@ $user = $conexion->query("SELECT * FROM usuario WHERE id = $userId")->fetch_arra
                     <h3>Cantidad</h3>
                     <div class="numero-entradas">
                         <div class="mas"><a  onclick="mas(<?php echo $row['precio'] ?>)"><i class="fas fa-chevron-up"></i></a></div>
-                        <input type="text" id="numeroEntrada" name="numero" value="0" readonly>
+                        <input type="text" id="numeroEntrada" name="numero" value="0" onkeyup="calculo(<?php echo $row['precio'] ?>)">
                         <div class="menos"><a  onclick="menos(<?php echo $row['precio'] ?>)"><i class="fas fa-chevron-down"></i></a></div> 
                     </div>
                     

@@ -17,7 +17,7 @@ while($fila = $resultado -> fetch_array(MYSQLI_ASSOC))
         //clave
         if($fila['clave']==$clave)
         {
-            if($fila['t_usuario'])
+            if($fila['t_usuario']==1)
             {
                 $bandera = 4;
             }
@@ -61,7 +61,7 @@ switch($bandera)
     case 3: //error en el usuario
         $ruta="location: login.php?v=3";
         break;
-    case 4: //error en el usuario
+    case 4: //Dashboard
         $ruta="location: dash/examples/dashboard.php";
         break;
     
