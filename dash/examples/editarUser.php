@@ -1,6 +1,6 @@
 <?php
     require_once("cabeza.php");
-    /*require_once("conexion.php");
+    require_once("conexion.php");
 
     if(isset($_GET['b'])&&isset($_GET['t']))
     {
@@ -16,7 +16,7 @@
         {
             switch($tipo)
             {
-            case 1: //busqueda por Dni
+            case 1: //busqueda por Usuario
                     $sql="SELECT *FROM usuario WHERE usuario=".$valor;
                     break;
             case 2: //busqueda por Apellidos
@@ -34,7 +34,7 @@
         $sql="SELECT *FROM usuario";
     }
 
-    $resultado=$conexion->query($sql);*/
+    $resultado=$conexion->query($sql);
 ?>
 
 
@@ -71,8 +71,7 @@
 
     <div id="ouBuscar">
     <?php
-    //echo "<p>Número de Registros Leidos: ".$resultado->num_rows."</p>";
-    echo "<p>Aca se mensiona el numero de regitro</p>";
+    echo "<p>Número de Registros Leidos: ".$resultado->num_rows."</p>";
     echo "<div class='row'>";
     echo "<div class='col-sm-12'>";
     echo "<table class='table table-striped'>";
@@ -90,7 +89,7 @@
     echo "<th>ELIMINAR</th>";
     echo "</tr>";
     echo "</thead>";
-    /*while($fila=$resultado->fetch_array(MYSQLI_ASSOC))
+    while($fila=$resultado->fetch_array(MYSQLI_ASSOC))
     {
         echo "<tr>";
         echo "<td>".$fila['id']."</td>";
@@ -98,13 +97,13 @@
         echo "<td>".$fila['nombre']."</td>";
         echo "<td>".$fila['apellido']."</td>";
         echo "<td>".$fila['email']."</td>";
-        echo "<td>".$fila['contraseña']."</td>";
-        echo "<td>".$fila['fecha']."</td>";
+        echo "<td>".$fila['clave']."</td>";
+        echo "<td>".$fila['nacimiento']."</td>";
         echo "<td>".$fila['sexo']."</td>";
         echo "<td><a href='editarRegUser.php?id=".$fila['id']."'><img src='img/editar.png'></a></td>";
         echo "<td><a href='#' data-toggle='modal' data-target='#deleteModal' onclick=enviarCodigo(".$fila['id'].")><img src='img/eliminar.png'></a></td>";
         echo "</tr>";
-    }*/
+    }
     echo "</table>";
     echo "</div>";
     echo "</div>";

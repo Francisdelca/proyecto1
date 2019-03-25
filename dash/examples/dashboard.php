@@ -15,8 +15,8 @@ require_once("cabeza.php");
                   </div>
                   <div class="col-7 col-md-8">
                     <div class="numbers">
-                      <p class="card-category">Capacity</p>
-                      <p class="card-title">150GB
+                      <p class="card-category">Personas Conectadas</p>
+                      <p class="card-title">---
                         <p>
                     </div>
                   </div>

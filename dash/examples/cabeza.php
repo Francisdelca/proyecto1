@@ -58,7 +58,13 @@
                 <a class="dropdown-item" href="registroUser.php">Registrar Usuario</a>
                 <a class="dropdown-item" href="editarUser.php">Editar Usuario</a>
             </div>
+          </li>
 
+          <li>
+            <a href="categoria.php">
+              <i class="nc-icon nc-tag-content"></i>
+              <p>Categoria</p>
+            </a>
           </li>
 
           <li>
