@@ -159,6 +159,13 @@ $('.prev').click(function()
 
 //cantidad de entradas
 var cant = $('#numeroEntrada').val();
+function calculo(precio)
+{
+    cant = $('#numeroEntrada').val();
+    var precio = precio;
+    var suma= precio * cant;
+    $('#total').text(suma);
+}
 function mas(precio)
 {
     cant++;
