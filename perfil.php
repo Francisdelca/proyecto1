@@ -47,12 +47,10 @@ else
             </ul>
         </div>
         <div class="edit">
-                        <a href="editarPerfil.php">Editar perfil</a>
+            <a href="editarPerfil.php"><i class="fas fa-wrench">&nbsp;</i>Editar perfil</a>
         </div>
     </div>
-    <div id="contenido">
-
-    </div>
+    <div id="contenido"></div>
 </div>
 <?php
 require_once('footer.php');

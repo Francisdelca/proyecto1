@@ -106,7 +106,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="error.php" target="_blank">Ir a Sitio</a>
+                  <a class="dropdown-item" href="../../index.php" target="_blank">Ir a Sitio</a>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar Sessión</a>
                 </div>
               </li>

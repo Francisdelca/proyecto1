@@ -1,3 +1,4 @@
 <?php
-echo "tus entradas";
+require_once('conexion.php');
+
 ?>

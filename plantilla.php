@@ -29,12 +29,39 @@ $user = $conexion->query("SELECT * FROM usuario WHERE id = $userId")->fetch_arra
             <h2>Descripcion:</h2><br>
             <p><?php echo $row['descripcion'];?></p>
         </div>
+
+        <div class="entradas-contain" id="entradas-contain">
+        <form action="comprarEntrada.php?idu=<?php echo $user['id']?>&&ev=<?php echo str_replace(" ", "_", $row['titulo']) ?>&&id=<?php echo $id ?>" method="post">
+        <h2>Compra tus entradas para <?php echo $row['titulo'] ?></h2><br>
+                    <br>
+            <div class="ticket">
+                <div class="precio">
+                    <h3>Precio por entrada</h3>
+                    <h2>S/.<?php echo $row['precio'] ?></h2> 
+                </div>  
+                <div class="cantidad">
+                    <h3>Cantidad</h3>
+                    <div class="numero-entradas">
+                        <div class="mas"><a  onclick="mas(<?php echo $row['precio'] ?>)"><i class="fas fa-chevron-up"></i></a></div>
+                        <input type="text" id="numeroEntrada" name="numero" value="0" readonly>
+                        <div class="menos"><a  onclick="menos(<?php echo $row['precio'] ?>)"><i class="fas fa-chevron-down"></i></a></div> 
+                    </div>
+                    
+                </div>
+                <div class="total">
+                    <h3>Total: </h3>
+                    <h2>S/.<span id="total">00</span></h2>
+                </div>
+            </div><br>
+            <input type="submit" value="Comprar">
+        </form>
+   </div>
     </div>
 
     <!-- ads -->
     <div class="sidebar">
         <div class="entradas">
-            <h2>S/.<?php echo $row['precio'] ;?></h2> <a href="entradas.php?id=<?php echo $row['id'] ;?>">Comprar</a>
+            <h2>S/.<?php echo $row['precio'] ;?></h2><a href="#entradas-contain" id="comprar">Comprar</a>
         </div>
         <div class="ad">
         <img src="https://gaia.adage.com/images/bin/image/x-large/328896594_1532.jpg?1533836518">

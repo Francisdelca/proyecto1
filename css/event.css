@@ -95,6 +95,7 @@
     border-radius: var(--radiusmin);
     border: 1px solid var(--color3);
     padding: 20px 50px;
+    margin-bottom:10px;
 }
 .entradas
 {
@@ -179,4 +180,77 @@ label
     padding: 10px;
     border-radius: var(--radiusmin);
     border: 1px solid var(--color3);
+}
+
+/* entradas */
+.entradas-contain
+{
+    box-sizing: border-box;
+    padding-top: 95px;
+    width: 100%;
+    display: none;
+    transition: 0;
+}
+.entradas-contain form
+{
+    box-sizing: border-box;
+    border: 1px solid var(--color3);
+    padding: 20px;
+    background: #fff;
+    border-radius: var(--radiusmin);
+}
+.ticket
+{
+    box-sizing: border-box;
+    margin-right: 20px;
+    width:100%;
+}
+.ticket .precio, .ticket .cantidad, .ticket .total
+{
+    box-sizing: border-box;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-top: 1px solid var(--color3);
+    border-bottom: 1px solid var(--color3);
+}
+.ticket .cantidad, .ticket .total
+{
+    border-top: 0;
+}
+.mas, .menos
+{
+    width: 100px;
+    font-size: 1.5em;
+    text-align: center;
+    cursor: pointer;
+}
+.numero-entradas
+{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+}
+.numero-entradas input
+{
+    width: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: var(--radiusmin);
+    border: 1px solid var(--color3);
+}
+.entradas-contain input[type="submit"]
+{
+    background: var(--color2);
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    width:20%;
+    border: 0;
+    padding: 10px;
 }

@@ -6,6 +6,7 @@ $ev=$_GET['ev'];
 $rel = $conexion -> query("SELECT * FROM usuario WHERE id = $iduser");
 $row = $rel -> fetch_array();
 
+$idevento = $row['id'];
 $user = $row['usuario'];
 $nombre = $row['nombre'];
 $apellido = $row['apellido'];
@@ -16,7 +17,7 @@ $entradas = $_POST['numero'];
 
 require_once('userConnect.php');
 
-$sql = "INSERT INTO $ev(usuario, nombre, apellido, email, nacimiento, sexo, entradas) VALUE('$user','$nombre', '$apellido', '$email', '$nacimiento', '$sexo', '$entradas')";
+$sql = "INSERT INTO $ev(idevento, usuario, nombre, apellido, email, nacimiento, sexo, entradas) VALUE('$idevento', '$user','$nombre', '$apellido', '$email', '$nacimiento', '$sexo', '$entradas')";
 $resultado = $conexion->query($sql);
 
 if($resultado)

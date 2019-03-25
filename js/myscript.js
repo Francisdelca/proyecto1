@@ -155,11 +155,29 @@ $('.prev').click(function()
             }  
         });
     });
-
-
-
-
 });
 
+//cantidad de entradas
+var cant = $('#numeroEntrada').val();
+function mas(precio)
+{
+    cant++;
+    var precio = precio;
+    var suma= precio * cant;
 
+    $('#total').text(suma);
+    $('#numeroEntrada').val(cant);
+}
+function menos(precio)
+{
+    cant--;
+    var precio = precio;
+    var suma= precio * cant;
 
+    $('#total').text(suma);
+    $('#numeroEntrada').val(cant);
+}
+$("#comprar").click(function()
+{
+    $("#entradas-contain").show(100);
+});
