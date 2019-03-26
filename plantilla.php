@@ -31,7 +31,7 @@ $user = $conexion->query("SELECT * FROM usuario WHERE id = $userId")->fetch_arra
         </div>
 
         <div class="entradas-contain" id="entradas-contain">
-        <form action="comprarEntrada.php?idu=<?php echo $user['id']?>&&ev=<?php echo str_replace(" ", "_", $row['titulo']) ?>&&id=<?php echo $id ?>" method="post">
+        <form action="comprarEntrada.php?idu=<?php echo $idUser?>&&ev=<?php echo str_replace(" ", "_", $row['titulo']) ?>&&id=<?php echo $id ?>" method="post">
         <h2>Compra tus entradas para <?php echo $row['titulo'] ?></h2><br>
                     <br>
             <div class="ticket">
